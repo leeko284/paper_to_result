@@ -1,0 +1,5 @@
+interface:
+  display_name: "Paper Insights Pro"
+  short_description: "Paper notes, PPT style extraction, and talk outlines"
+  default_prompt: "Use $paper-insights-pro to analyze a paper and generate notes plus a presentation outline."
+
