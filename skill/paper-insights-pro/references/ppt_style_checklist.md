@@ -21,6 +21,7 @@ When multiple decks are provided, extract shared patterns. If decks conflict, fo
 - Visual language: icons, diagrams, image masks, arrows, callouts, borders, page numbers.
 - Academic density: amount of text per slide, table density, formula placement, caption length.
 - Reusable slide mapping: which template page type fits each paper presentation slide.
+- Speaker-note habit if historical decks contain notes; otherwise require concise academic notes for every generated slide.
 
 ## Output
 
@@ -42,3 +43,15 @@ Summarize style as concrete reusable rules, then apply those rules to the genera
 |---|---|---|
 | Slide 1 | Cover |  |
 ```
+
+For paper PPT generation, also require an evidence-visual plan:
+
+```markdown
+### Evidence Visual Plan
+
+| Slide | Paper visual | Source location | Extraction status | Role in argument |
+|---|---|---|---|---|
+| Slide 2 | Figure/Table X | page/section | cropped / needs cropping / summarized only |  |
+```
+
+Every generated slide must include speaker notes. Notes should explain the slide narrative, the role of the cropped figure/table, and the transition to the next slide.

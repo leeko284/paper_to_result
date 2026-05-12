@@ -1,6 +1,6 @@
 ---
 name: paper-insights-pro
-description: Deep academic paper analysis and presentation planning for PDF papers, paper titles, local paper paths, or paper collections. Use when the user asks to summarize a paper, create reading notes, prepare a report, design a paper presentation, generate a PPT outline, or produce Marp Markdown. Extract research motivation, contributions, model architecture, algorithms, key figures, formulas, experiments, metrics, conclusions, limitations, and academic insights. Generate notes from a provided template, references/PaperNote_template.md, or a discovered PaperNote_template.md. When PPT templates, historical .pptx files, uploaded decks, or a PPT_template directory are available, first extract slide style and layout rules, then adapt the paper presentation outline or Marp Markdown to match that style. Preserve important English terms, avoid fabricating missing data, and clearly flag uncertain or unavailable information.
+description: Deep academic paper analysis and presentation planning for PDF papers, paper titles, local paper paths, or paper collections. Use when the user asks to summarize a paper, create reading notes, prepare a report, design a paper presentation, generate a PPT outline, or produce Marp Markdown. Extract research motivation, contributions, model architecture, algorithms, key figures, formulas, experiments, metrics, conclusions, limitations, and academic insights. For PPT work, use cropped paper figures/tables as primary evidence when possible and add speaker notes to every slide. When PPT templates, historical .pptx files, uploaded decks, or a PPT_template directory are available, first extract slide style and layout rules, then adapt the output to match that style. Avoid fabricating missing data and clearly flag uncertain information.
 ---
 
 # Paper Insights Pro
@@ -28,10 +28,11 @@ If multiple templates are available, apply this priority:
 1. Identify source papers and available templates.
 2. Extract paper text, captions, tables, formulas, and figure references. Use OCR or fallback extraction only when needed.
 3. Build a paper evidence map: problem, motivation, contribution, method, model architecture, algorithm flow, experiments, metrics, results, limitations.
-4. Generate notes with the user's template. If no template is provided, use `references/PaperNote_template.md`; if that file is unavailable, use the note sections in this skill.
-5. If PPT templates or historical decks exist, analyze slide style before designing the presentation. Use `references/ppt_style_checklist.md` when style extraction is needed.
-6. Produce either a text PPT outline or Marp Markdown, depending on the user's requested output.
-7. Clearly mark missing, uncertain, or non-extractable information.
+4. For PPT tasks, identify the figures and tables that should become slide evidence. Prefer extracting or cropping the original paper figures/tables from the PDF; if image extraction fails, summarize the visual content from captions and surrounding text.
+5. Generate notes with the user's template. If no template is provided, use `references/PaperNote_template.md`; if that file is unavailable, use the note sections in this skill.
+6. If PPT templates or historical decks exist, analyze slide style before designing the presentation. Use `references/ppt_style_checklist.md` when style extraction is needed.
+7. Produce either a text PPT outline or Marp Markdown, depending on the user's requested output. Include speaker notes for every slide.
+8. Clearly mark missing, uncertain, or non-extractable information.
 
 ## Paper Notes
 
@@ -85,9 +86,17 @@ For each slide provide:
 - Main message.
 - Recommended layout.
 - Bullet content.
-- Figure/table/formula placement.
-- Speaker explanation points.
+- Evidence visual: the exact Figure/Table/formula to crop or place, with source page/section when available.
+- Speaker notes: paragraph-style notes explaining what to say on this slide.
 - Template/style mapping if a PPT template was analyzed.
+
+Use the paper's own figures and tables as the main basis of the presentation. Do not replace key paper evidence with generic diagrams unless the original figure/table cannot be extracted or is unreadable. For every evidence visual, record:
+
+- Figure/Table/formula ID.
+- Source page or section.
+- Caption or nearby description.
+- Why it supports the slide's argument.
+- Extraction status: `cropped`, `needs cropping`, `not extractable`, or `summarized only`.
 
 For Slide 2-3, describe key figures in detail, for example:
 
@@ -96,6 +105,8 @@ Place Figure 2 here: overall network architecture. It should show input features
 ```
 
 For Slide 4, reproduce core metrics as Markdown tables when the paper provides numeric results. Never invent values. Use `not reported` or `paper does not specify` for missing values.
+
+Every slide must include speaker notes. Notes should be suitable for oral reporting: explain the slide's logic, define key terms, connect the figure/table to the paper's claim, and avoid simply repeating bullet points.
 
 ## Marp Output
 
@@ -117,6 +128,15 @@ paginate: true
 
 If a PPT style was extracted, express the style through Marp-safe choices such as heading hierarchy, concise page notes, table formatting, and comments describing where template visuals should be applied.
 
+For Marp, add speaker notes as HTML comments after each slide's visible content:
+
+```markdown
+<!--
+Speaker notes:
+Explain the purpose of this slide, how to read the cropped figure/table, and what conclusion the audience should take away.
+-->
+```
+
 ## Reliability Rules
 
 - Keep academic tone.
@@ -124,4 +144,6 @@ If a PPT style was extracted, express the style through Marp-safe choices such a
 - Distinguish paper facts from interpretation.
 - Do not fabricate missing experiments, metrics, datasets, formulas, or conclusions.
 - If figure images cannot be extracted, summarize from captions and surrounding text, then mark the figure location.
+- For PPT work, do not omit slide speaker notes.
+- For PPT work, do not omit paper figure/table evidence unless the paper has no relevant visual evidence or extraction is impossible.
 - If PDF extraction is incomplete, state the extraction limitation and base conclusions only on available evidence.

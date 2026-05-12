@@ -1,0 +1,55 @@
+# Python and tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Virtual environments and local dependency folders
+.venv/
+venv/
+env/
+node_modules/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Generated paper-analysis outputs
+output/
+outputs/
+reports/
+artifacts/
+tmp/
+temp/
+
+# Source papers and extracted media are local inputs/outputs, not repo source.
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.tif
+*.tiff
+*.bmp
+*.svg
+
+# Generated Office deliverables and local PPT examples
+*.docx
+*.pptx
+*.xlsx
+*.xlsm
+
+# Keep template directories visible without committing private decks.
+!skill/paper-insights-pro/assets/PPT_template/.gitkeep
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.tmp
+*.bak

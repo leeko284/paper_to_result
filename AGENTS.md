@@ -32,6 +32,8 @@ E:\Items\paper_to_result\skill\paper-insights-pro\SKILL.md
 E:\Items\paper_to_result\skill\paper-insights-pro\assets\PPT_template
 ```
 
+生成论文汇报 PPT 或 Marp Markdown 时，必须优先截取或引用论文中的关键图表作为每页论据；无法提取图片时，要概括图表内容并标注原 Figure/Table 位置。每一页都必须添加备注，备注用于口头汇报，说明页面逻辑、图表读法和该页结论。
+
 该 Skill 只用于本项目，不安装、不复制到全局 Skill 目录：
 
 ```text
