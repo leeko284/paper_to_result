@@ -1,6 +1,6 @@
 # paper_to_result
 
-本仓库用于在 `E:\Items\paper_to_result` 项目内维护论文精读、笔记整理和论文汇报大纲生成的 Codex 本地 Skill。核心能力集中在 `paper-insights-pro`，面向论文 PDF、论文题目、论文路径和汇报材料生成任务。
+本仓库用于在项目内维护论文精读、笔记整理和论文汇报大纲生成的 Codex 本地 Skill。核心能力集中在 `paper-insights-pro`，面向论文 PDF、论文题目、论文路径和汇报材料生成任务。
 
 ## 功能范围
 
