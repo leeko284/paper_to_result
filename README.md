@@ -38,25 +38,3 @@
 3. 生成论文汇报 PPT 或 Marp Markdown 时，必须列出每页使用的 Figure/Table/公式证据，以及对应 speaker notes。
 
 该 Skill 是项目本地 Skill，不需要安装或复制到全局 Skill 目录。
-
-## Git 管理策略
-
-纳入版本管理：
-
-- `AGENTS.md`
-- `README.md`
-- `.gitignore`
-- `skill/paper-insights-pro/SKILL.md`
-- `skill/paper-insights-pro/agents/openai.yaml`
-- `skill/paper-insights-pro/references/*.md`
-- `skill/paper-insights-pro/assets/PPT_template/.gitkeep`
-
-默认忽略：
-
-- 论文原文 PDF。
-- `output/`、`outputs/`、`reports/`、`artifacts/` 等生成结果。
-- 从论文中提取的图片、页面渲染、预览图。
-- 本地 PPT 模板实例、生成的 PPT/Word/Excel 文件。
-- 虚拟环境、缓存、临时文件和本地配置。
-
-这样仓库只保存可复用的 Skill 规则和模板骨架，不把本地论文材料、生成结果或可能涉及版权/隐私的文件推送到 GitHub。
